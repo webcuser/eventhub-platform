@@ -1,0 +1,11 @@
+{
+  "run": "cd backend && php artisan migrate --force && php-fpm",
+  "port": 9000,
+  "build": "cd frontend && npm run build",
+  "image": "php:8.1-fpm",
+  "setup": "cd backend && composer install && cd ../frontend && npm install",
+  "services": [
+    "mysql",
+    "redis"
+  ]
+}
