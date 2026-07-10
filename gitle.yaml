@@ -1,9 +1,9 @@
 {
-  "run": "cd backend && php artisan migrate --force && php-fpm",
-  "port": 9000,
+  "run": "php -S 0.0.0.0:8000 -t backend/public & cd frontend && npm start",
+  "port": 3000,
   "build": "cd frontend && npm run build",
-  "image": "php:8.1-fpm",
-  "setup": "cd backend && composer install && cd ../frontend && npm install",
+  "image": "node:18-bookworm",
+  "setup": "apt-get update && apt-get install -y git unzip php && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && cd backend && composer install && cd ../frontend && npm install",
   "services": [
     "mysql",
     "redis"
